@@ -3,11 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config(); 
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Successfully connected to MongoDB'))
+  .catch(err => console.error('Connection error', err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
