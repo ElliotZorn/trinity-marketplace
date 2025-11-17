@@ -998,4 +998,4 @@ product_id,sell_id,buyer_id,purchase_date,amount,payment_method
 997,997,998,1/4/2025,2627.23,cash
 998,998,999,5/7/2024,1835.5,cash
 999,999,1000,5/5/2023,4535.95,paypal
-1000,1000,1001,6/2/2024,603.34,credit_card
+1000,1000,1,6/2/2024,603.34,credit_card

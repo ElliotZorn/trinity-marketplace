@@ -997,4 +997,4 @@
 {"product_id":997,"sell_id":997,"buyer_id":998,"purchase_date":"1/22/2024","amount":3971.95,"payment_method":"cash"},
 {"product_id":998,"sell_id":998,"buyer_id":999,"purchase_date":"10/16/2021","amount":3158.06,"payment_method":"credit_card"},
 {"product_id":999,"sell_id":999,"buyer_id":1000,"purchase_date":"3/26/2025","amount":2184.52,"payment_method":"cash"},
-{"product_id":1000,"sell_id":1000,"buyer_id":1001,"purchase_date":"6/8/2020","amount":3940.61,"payment_method":"credit_card"}]
+{"product_id":1000,"sell_id":1000,"buyer_id":1,"purchase_date":"6/8/2020","amount":3940.61,"payment_method":"credit_card"}]
