@@ -6,6 +6,7 @@ var logger = require('morgan');
 require('dotenv').config(); 
 var mongoose = require('mongoose');
 
+const seedDB = require('./scripts/seed/seedDB');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -14,9 +15,16 @@ var app = express();
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('Successfully connected to MongoDB'))
-  .catch(err => console.error('Connection error', err));
+  .then(async () => {
+    console.log('Successfully connected to MongoDB');
 
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Seeding database...');
+      await seedDB();
+      console.log('Database seeded successfully.');
+    }
+  })
+  .catch(err => console.error('Connection error', err));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

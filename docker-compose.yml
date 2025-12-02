@@ -5,7 +5,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGO_URI=${MONGO_URI}
+      NODE_ENV: development
+      MONGO_URI: ${MONGO_URI}
     depends_on:
       - mongo
 

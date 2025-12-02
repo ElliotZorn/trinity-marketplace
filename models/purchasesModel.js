@@ -10,5 +10,5 @@ const purchasesSchema = new mongoose.Schema({
     payment_method: { type: String, enum: ['credit_card', 'paypal', 'cash'], required: true },
 });
 
-const Purchases = mongoose.model('product', productSchema);
-module.exports = Product;
+const Purchases = mongoose.model('purchases', purchasesSchema);
+module.exports = Purchases;
