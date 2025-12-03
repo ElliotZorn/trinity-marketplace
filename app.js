@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config(); 
 var mongoose = require('mongoose');
+const seedDb = require('./scripts/seed/seedDB');
+
 
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -21,6 +23,9 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase
 mongoose.connect(MONGO_URI)
   .then(async () => {
     console.log('Successfully connected to MongoDB');
+    // Optionally seed the database
+    // uncomment the line below to seed the database, didnt bother with docker commands lol.
+    // await seedDb(); 
   })
   .catch(err => console.error('Connection error', err));
 // view engine setup
