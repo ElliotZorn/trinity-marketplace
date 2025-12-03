@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     category: { type: String, required: true },
     description: { type: String },
     condition: { type: String, enum: ['new','used'], default: 'new' },
-    location: { type: String,  type: String},
+    location: { type: String},
     payment_Method: { type: [String], enum: ['credit_card', 'paypal', 'cash'], required: true },
     contact_info: { type: String, required: true },
     is_sold: { type: Boolean, default: false },
@@ -16,7 +16,6 @@ const productSchema = new mongoose.Schema({
     update_at: { type: Date, default: Date.now },
     photos: { type: [String] },
     seller_id: { type: String, required: true },
-
 });
 
 /*

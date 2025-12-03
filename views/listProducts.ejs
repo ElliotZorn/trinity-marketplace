@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <h1>All Products</h1>
+    <a href="/products/new">Add New Product</a>
+    <ul>
+        <% products.forEach(product => { %>
+            <li><strong><%= product.name %></strong> - $<%= product.price %> - <%= product.condition %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>

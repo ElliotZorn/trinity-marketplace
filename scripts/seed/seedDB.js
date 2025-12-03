@@ -4,7 +4,7 @@ const seedInterested = require('./seedInterested');
 const seedPurchases = require('./seedPurchases');
 
 const seedDb = async () => {
-
+  console.log('Seeding database...');
   await seedUsers();
   await seedProducts();
   await seedInterested();

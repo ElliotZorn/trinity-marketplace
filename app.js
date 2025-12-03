@@ -5,13 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config(); 
 var mongoose = require('mongoose');
+const seedDb = require('./scripts/seed/seedDB');
 
-const seedDB = require('./scripts/seed/seedDB');
+
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 // var interestsRouter = require('./routes/interests');
 // var purchasesRouter = require('./routes/purchases');
-// var productsRouter = require('./routes/products');
+var productsRouter = require('./routes/products');
+var authRouter = require('./routes/auth');
 
 
 var app = express();
@@ -21,12 +23,9 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase
 mongoose.connect(MONGO_URI)
   .then(async () => {
     console.log('Successfully connected to MongoDB');
-
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Seeding database...');
-      await seedDB();
-      console.log('Database seeded successfully.');
-    }
+    // Optionally seed the database
+    // uncomment the line below to seed the database, didnt bother with docker commands lol.
+    // await seedDb(); 
   })
   .catch(err => console.error('Connection error', err));
 // view engine setup
@@ -43,7 +42,8 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 // app.use('/interests', interestsRouter);
 // app.use('/purchases', purchasesRouter);
-// app.use('/products', productsRouter); 
+app.use('/products', productsRouter);
+app.use('/auth', authRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
