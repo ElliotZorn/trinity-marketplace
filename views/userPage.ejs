@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Welcome, <%= user.first_name %>!</h1>
+    
+    <div class="dashboard-options">
+        <div class="option">
+            <h3>Marketplace</h3>
+            <p>Browse and search for items.</p>
+            <a href="/userProducts?seller_id=<%= user.user_id %>"><button>View Products</button></a>
+        </div>
+
+        <div class="option">
+            <h3>My Profile</h3>
+            <p>Update your details or delete account.</p>
+            <a href="/users/edit/<%= user.user_id %>"><button>Edit Profile</button></a>
+        </div>
+    </div>
+
+    <br>
+    <a href="/auth/logout">Logout</a> </body>
+</html>

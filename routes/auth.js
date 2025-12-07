@@ -20,12 +20,16 @@ router.post('/', async (req, res) => {
       return res.render('login', { error: 'Incorrect password' });
     }
     req.session.userId = user.user_id;
-    res.redirect(`/userProducts`);
+    res.redirect(`/users/home/${user.user_id}`);
 
   } catch (err) {
     console.error(err);
     res.render('login', { error: 'Server error' });
   }
+});
+
+router.get('/logout', (req, res) => {
+  res.redirect('/');
 });
 
 module.exports = router;
