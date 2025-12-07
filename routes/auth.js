@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
       return res.render('login', { error: 'Incorrect password' });
     }
     req.session.userId = user.user_id;
-    res.redirect(`/userProducts`);
+    res.redirect(`/search/categories`);
 
   } catch (err) {
     console.error(err);

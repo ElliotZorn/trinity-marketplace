@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Category Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    details { margin-bottom: 12px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background: #fafafa; }
+    summary { cursor: pointer; font-size: 18px; font-weight: bold; }
+    .sub-item { padding: 6px 0 6px 15px; border-bottom: 1px solid #ddd; }
+    .sub-item:last-child { border-bottom: none; }
+    a { text-decoration: none; color: #333; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Category Search</h1>
+
+<% Object.keys(categoryMap).forEach(parentName => { %>
+  <% const children = categoryMap[parentName]; %>
+
+  <% if (children.length === 1) { %>
+    <% const child = children[0]; %>
+    <form action="/search/categories/<%= child.slug %>" method="GET">
+      <button type="submit" style="padding:10px 15px; margin-bottom:12px; border-radius:8px; border:1px solid #ccc; background:#f5f5f5; cursor:pointer; width:100%; text-align:left; font-size:18px; font-weight:bold;">
+        <%= parentName %>
+      </button>
+    </form>
+  <% } else { %>
+    <details>
+      <summary><%= parentName %></summary>
+      <% children.forEach(child => { %>
+        <div class="sub-item">
+          <a href="/search/categories/<%= child.slug %>"><%= child.name %></a>
+        </div>
+      <% }) %>
+    </details>
+  <% } %>
+<% }) %>
+
+</body>
+</html>

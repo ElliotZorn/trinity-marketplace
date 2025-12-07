@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title><%= name %> Products</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { margin-bottom: 20px; }
+
+    .item { 
+      padding: 10px; 
+      border-bottom: 1px solid #ddd; 
+    }
+
+    .item a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1><%= name %></h1>
+
+  <% products.forEach(product => { %>
+    <div class="item">
+      <h2>
+        <a href="/search/product/<%= product.product_id %>">
+          <%= product.name %>
+        </a>
+      </h2>
+
+      <% if (product.parent) { %>
+        <p>Parent: <%= product.parent %></p>
+      <% } %>
+    </div>
+  <% }) %>
+
+</body>
+</html>

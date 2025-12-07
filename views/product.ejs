@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title><%= product.name %></title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { margin-bottom: 15px; }
+    .price { font-size: 1.5em; color: #2a9d8f; margin-bottom: 10px; }
+    .category { font-style: italic; margin-bottom: 10px; }
+    .description { margin-bottom: 15px; }
+    .details { margin-bottom: 15px; }
+    .images { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .images img { max-width: 200px; border: 1px solid #ddd; border-radius: 5px; }
+    .back-link { margin-top: 20px; display: inline-block; text-decoration: none; color: #333; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <h1><%= product.name %></h1>
+
+  <div class="price">$<%= product.price.toFixed(2) %></div>
+
+  <div class="category">Category: <%= product.category %></div>
+
+  <div class="description"><%= product.description %></div>
+
+  <div class="details">
+    <p><strong>Condition:</strong> <%= product.condition %></p>
+    <p><strong>Location:</strong> <%= product.location %></p>
+    <p><strong>Payment Method:</strong> <%= product.payment_Method %></p>
+    <p><strong>Seller Contact:</strong> <%= product.contact_info %></p>
+    <p><strong>Status:</strong> <%= product.is_sold ? "Sold" : "Available" %></p>
+  </div>
+
+  <% if (product.photos && product.photos.length > 0) { %>
+    <div class="images">
+      <% product.photos.forEach(photo => { %>
+        <img src="<%= photo %>" alt="<%= product.name %>">
+      <% }) %>
+    </div>
+  <% } %>
+
+</body>
+</html>
