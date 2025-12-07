@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/users/update/<%= user.user_id %>" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" value="<%= user.username %>" required><br>
+        
+        <label>First Name:</label>
+        <input type="text" name="first_name" value="<%= user.first_name %>" required><br>
+        
+        <label>Last Name:</label>
+        <input type="text" name="last_name" value="<%= user.last_name %>" required><br>
+        
+        <label>Email:</label>
+        <input type="email" name="email" value="<%= user.email %>" required><br>
+        
+        <label>Phone:</label>
+        <input type="tel" name="phone" value="<%= user.phone %>" required><br>
+        
+        <button type="submit">Update Account</button>
+    </form>
+
+    <hr>
+    <h3>Danger Zone</h3>
+    <form action="/users/delete/<%= user.user_id %>" method="POST" onsubmit="return confirm('Are you sure?');">
+        <button type="submit" style="background-color: red; color: white;">Delete Account</button>
+    </form>
+</body>
+</html>

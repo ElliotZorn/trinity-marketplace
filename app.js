@@ -9,7 +9,7 @@ const seedDb = require('./scripts/seed/seedDB');
 
 
 var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');
 // var interestsRouter = require('./routes/interests');
 // var purchasesRouter = require('./routes/purchases');
 var productsRouter = require('./routes/products');
@@ -25,7 +25,7 @@ mongoose.connect(MONGO_URI)
     console.log('Successfully connected to MongoDB');
     // Optionally seed the database
     // uncomment the line below to seed the database, didnt bother with docker commands lol.
-    // await seedDb(); 
+    //await seedDb(); 
   })
   .catch(err => console.error('Connection error', err));
 // view engine setup
@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 // app.use('/interests', interestsRouter);
 // app.use('/purchases', purchasesRouter);
 app.use('/products', productsRouter);

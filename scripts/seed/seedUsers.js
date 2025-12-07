@@ -12,8 +12,12 @@ const MONGO_URI = process.env.MONGO_URI;
   const seedData = JSON.parse(jsonData);
 
 const transformUser = async (user) => {
+  const randomNum = Math.floor(1000 + Math.random() * 9000); 
+  const generatedUsername = `${user.first_name.toLowerCase()}.${user.last_name.toLowerCase()}${randomNum}`;
+
   return {
     user_id: user.user_id,
+    username: generatedUsername,
     first_name: user.first_name,
     last_name: user.last_name,
     email: user.email,
