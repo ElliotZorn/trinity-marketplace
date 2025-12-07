@@ -47,7 +47,7 @@ router.post('/update/:id', async function(req, res) {
       { runValidators: true }
     );
 
-    res.redirect(`/products?seller_id=${req.params.id}`);
+    res.redirect(`/users/home/${req.params.id}`);
   } catch (error) {
     const user = await User.findOne({ user_id: req.params.id });
     res.render('editUser', { user: user, error: 'Update failed: ' + error.message });
@@ -58,6 +58,17 @@ router.post('/delete/:id', async function(req, res) {
   try {
     await User.findOneAndDelete({ user_id: req.params.id });
     res.redirect('/');
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+router.get('/home/:id', async function(req, res) {
+  try {
+    const user = await User.findOne({ user_id: req.params.id });
+    if (!user) return res.status(404).send('User not found');
+    
+    res.render('userPage', { user: user });
   } catch (error) {
     res.status(500).send(error.message);
   }
