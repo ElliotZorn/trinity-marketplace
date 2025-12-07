@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../models/userModel'); // your user schema
+const User = require('../models/userModel'); 
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
     if (user.password !== password) {
       return res.render('login', { error: 'Incorrect password' });
     }
-
-    res.redirect(`/products?seller_id=${user.user_id}`);
+    req.session.userId = user.user_id;
+    res.redirect(`/userProducts`);
 
   } catch (err) {
     console.error(err);

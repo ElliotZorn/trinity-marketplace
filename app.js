@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -12,13 +13,19 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // var interestsRouter = require('./routes/interests');
 // var purchasesRouter = require('./routes/purchases');
-var productsRouter = require('./routes/products');
+var productsRouter = require('./routes/userProducts');
 var authRouter = require('./routes/auth');
 
 
 var app = express();
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
+
+app.use(session({
+  secret: 'in-a-box',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 mongoose.connect(MONGO_URI)
   .then(async () => {
@@ -42,7 +49,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/interests', interestsRouter);
 // app.use('/purchases', purchasesRouter);
-app.use('/products', productsRouter);
+app.use('/userProducts', productsRouter);
 app.use('/auth', authRouter); 
 
 // catch 404 and forward to error handler
