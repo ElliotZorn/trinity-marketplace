@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/userModel');
+const Product = require('../models/productModel');
+const Purchases = require('../models/purchasesModel');
+const Interested = require('../models/interestedModel');
 
 
 router.get('/register', function(req, res) {
@@ -56,7 +59,23 @@ router.post('/update/:id', async function(req, res) {
 
 router.get('/delete/:id', async function(req, res) {
   try {
-    await User.findOneAndDelete({ user_id: req.params.id });
+    const userId = req.params.id; 
+    await Product.deleteMany({ seller_id: userId });
+
+    await Purchases.deleteMany({ 
+      $or: [
+        { sell_id: userId }, 
+        { buyer_id: userId }
+      ] 
+    });
+
+    await Interested.updateMany(
+      { user_id: userId },
+      { $pull: { user_id: userId } }
+    );
+
+    await User.findOneAndDelete({ user_id: userId });
+
     req.session.destroy(err => {
       if (err) {
         console.log(err);

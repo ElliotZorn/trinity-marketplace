@@ -64,6 +64,11 @@
           </a>
         </h2>
         <h3>$<%= product.price.toFixed(2) %></h3>
+        <form action="/search/product/<%= product.product_id %>/report" method="POST" style="display:inline;">
+            <button type="submit" style="background-color: #ff4444; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                Report
+            </button>
+        </form>
       </div>
     <% }) %>
 
