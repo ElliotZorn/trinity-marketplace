@@ -86,7 +86,6 @@
   { "category_id": 85, "parent": "Food", "name": "Meal Kits", "slug": "food-meal-kits" },
   { "category_id": 86, "parent": "Food", "name": "Health Foods", "slug": "food-health-foods" },
   { "category_id": 87, "parent": "Food", "name": "Meat Substitutes", "slug": "food-meat-substitutes" },
-  { "category_id": 88, "parent": null, "name": "Footwear", "slug": "footwear" },
   { "category_id": 89, "parent": null, "name": "Tools", "slug": "tools" },
   { "category_id": 90, "parent": null, "name": "Art Supplies", "slug": "art-supplies" },
   { "category_id": 91, "parent": "Clothing", "name": "Sweaters", "slug": "clothing-sweaters" },

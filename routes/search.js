@@ -34,21 +34,37 @@ categories.forEach(cat => {
 
 router.get('/categories/:slug', async (req, res) => {
   const { slug } = req.params;
+  const { minPrice, maxPrice, condition, locations, paymentMethods, includeSold } = req.query;
 
-    const slugger = slug
+  const prettyCategory = slug
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' - ');
-    console.log(slugger);
-    const categoryName = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  console.log(categoryName);
 
-  const products = await Products.find({ category : slugger}).lean();
-  console.log(products);
+  const categoryName = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+  const filters = {
+    categories: [prettyCategory],
+    minPrice: minPrice ? Number(minPrice) : undefined,
+    maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    condition: condition ? (Array.isArray(condition) ? condition : [condition]) : undefined,
+    locations: locations ? (Array.isArray(locations) ? locations : [locations]) : undefined,
+    paymentMethods: paymentMethods ? (Array.isArray(paymentMethods) ? paymentMethods : [paymentMethods]) : undefined,
+    includeSold: includeSold === 'true'
+  };
+
+
+  const products = await Products.filterProducts(filters);
 
   res.render('products', {
     products,
-    name: categoryName
+    name: categoryName,
+    minPrice,
+    maxPrice,
+    condition: filters.condition,
+    locations: filters.locations,
+    paymentMethods: filters.paymentMethods,
+    includeSold: filters.includeSold
   });
 });
 

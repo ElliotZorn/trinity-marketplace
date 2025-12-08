@@ -57,6 +57,11 @@ productSchema.statics.filterProducts = async function(filters = {}) {
     query.payment_Method = { $in: filters.paymentMethods };
   }
 
+  // Condition filter
+  if (filters.condition && filters.condition.length > 0) {
+    query.condition = { $in: filters.condition };
+  }
+
   // Hide sold by default
   if (!filters.includeSold) {
     query.is_sold = false;
