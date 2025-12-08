@@ -1,0 +1,14 @@
+<header>
+  <div class="logo-container">
+    <img src="/images/newlogo.png" alt="Header Image" style="max-width: 200px;">
+  </div>
+
+  <div class="nav-container">
+    <a href="/auth" class="<%= currentPath === '/auth' ? 'active' : '' %>">Sign In</a>
+    <a href="/users/register" class="<%= currentPath === '/users/register' ? 'active' : '' %>">Create Account</a>
+    <a href="/search/categories" class="<%= currentPath === '/search/categories' ? 'active' : '' %>">Search</a>
+    <% if (session.userId) { %>
+    <a href="/users/home/<%= session.userId %>" class="<%= currentPath.startsWith('/users/home') ? 'active' : '' %>">Account</a>
+    <% } %>
+  </div>
+</header>

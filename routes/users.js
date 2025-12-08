@@ -54,10 +54,16 @@ router.post('/update/:id', async function(req, res) {
   }
 });
 
-router.post('/delete/:id', async function(req, res) {
+router.get('/delete/:id', async function(req, res) {
   try {
     await User.findOneAndDelete({ user_id: req.params.id });
-    res.redirect('/');
+    req.session.destroy(err => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send('Error logging out');
+      }
+      res.redirect('/auth');
+    });  
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -65,6 +71,10 @@ router.post('/delete/:id', async function(req, res) {
 
 router.get('/home/:id', async function(req, res) {
   try {
+    if (!req.session.userId) {
+      return res.redirect('/auth'); 
+    }
+
     const user = await User.findOne({ user_id: req.params.id });
     if (!user) return res.status(404).send('User not found');
     

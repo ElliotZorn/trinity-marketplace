@@ -28,6 +28,12 @@ app.use(session({
   saveUninitialized: true,
 }));
 
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  res.locals.session = req.session;
+  next();
+});
+
 mongoose.connect(MONGO_URI)
   .then(async () => {
     console.log('Successfully connected to MongoDB');

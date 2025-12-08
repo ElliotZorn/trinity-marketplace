@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="UTF-8">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>Create Account</title>
 </head>
+
 <body>
+  <%- include('header') %>
+
+  <div class="auth-content">
     <h1>Create Account</h1>
+
     <% if (error) { %>
-        <p style="color: red;"><%= error %></p>
+      <p style="color: red;"><%= error %></p>
     <% } %>
-    <form action="/users/register" method="POST">
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="text" name="first_name" placeholder="First Name" required><br>
-        <input type="text" name="last_name" placeholder="Last Name" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="tel" name="phone" placeholder="Phone" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Sign Up</button>
+
+    <form class="auth-form" action="/users/register" method="POST" style="max-width: 400px; display: flex; flex-direction: column; gap: 12px;">
+      <input type="text" name="username" placeholder="Username" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="text" name="first_name" placeholder="First Name" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="text" name="last_name" placeholder="Last Name" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="email" name="email" placeholder="Email" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="tel" name="phone" placeholder="Phone" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="password" name="password" placeholder="Password" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+
+      <button type="submit" style="padding: 10px; border-radius: 6px; background: #800000; color: white; border: none; cursor: pointer;">
+        Sign Up
+      </button>
     </form>
+  </div>
 </body>
 </html>

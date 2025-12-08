@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Products</title>
+</head>
+<body>
+    <%- include('header') %>    
+    <h1>Products you are interested in</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <li><strong><%= product.name %></strong> - $<%= product.price %> - <%= product.condition %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>

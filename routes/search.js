@@ -5,27 +5,31 @@ const Products = require('../models/productModel');
 
 
 router.get('/categories', async (req, res) => {
+
+  if (!req.session.userId) {
+    return res.redirect('/auth'); 
+  }
   const categories = await Category.find().lean();
 
   const categoryMap = {};
 
-categories.forEach(cat => {
-  if (cat.parent === null) {
-    categoryMap[cat.name] = [];
-  }
-});
-
-categories.forEach(cat => {
-  if (cat.parent !== null) {
-    if (!categoryMap[cat.parent]) {
-      categoryMap[cat.parent] = [];
+  categories.forEach(cat => {
+    if (cat.parent === null) {
+      categoryMap[cat.name] = [];
     }
-    categoryMap[cat.parent].push(cat);
-  }
-  else{
-    categoryMap[cat.name].push(cat); 
-  }
-});
+  });
+
+  categories.forEach(cat => {
+    if (cat.parent !== null) {
+      if (!categoryMap[cat.parent]) {
+        categoryMap[cat.parent] = [];
+      }
+      categoryMap[cat.parent].push(cat);
+    }
+    else{
+      categoryMap[cat.name].push(cat); 
+    }
+  });
 
 
   res.render('categories', { categoryMap });
