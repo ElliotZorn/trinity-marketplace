@@ -6,11 +6,12 @@
 </head>
 <body>
     <%- include('header') %>
-    <h1>Edit Profile</h1>
     <% if (error) { %>
         <p style="color: red;"><%= error %></p>
     <% } %>
     <form class="edit-form" action="/users/update/<%= user.user_id %>" method="POST">
+        <h1>Edit Profile</h1>
+
         <label>Username:</label>
         <input type="text" name="username" value="<%= user.username %>" required><br>
         
@@ -27,12 +28,6 @@
         <input type="tel" name="phone" value="<%= user.phone %>" required><br>
         
         <button type="submit">Update Account</button>
-    </form>
-
-    <hr>
-    <h3>Danger Zone</h3>
-    <form action="/users/delete/<%= session.userId%>" method="POST" onsubmit="return confirm('Are you sure?');">
-        <button type="submit" style="background-color: red; color: white;">Delete Account</button>
     </form>
 </body>
 </html>
