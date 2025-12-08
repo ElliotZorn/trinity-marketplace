@@ -84,5 +84,18 @@ router.get('/product/:id', async (req, res) => {
   res.render('product', { product });
 });
 
+router.post('/product/:id/report', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Products.findOneAndDelete({ product_id: id });
+    
+    const referer = req.get('Referer') || '/search/categories';
+    res.redirect(referer);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error reporting product");
+  }
+});
+
 
 module.exports = router;
