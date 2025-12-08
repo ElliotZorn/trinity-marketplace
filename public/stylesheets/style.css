@@ -1,8 +1,431 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
 
 a {
   color: #00B7FF;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+header .nav-container {
+  width: 100%;
+  height: 60px;
+  background-color: #800000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+header .nav-container a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+header .nav-container a.active {
+  color: yellow;
+}
+
+.price { font-size: 1.5em; color: #2a9d8f; margin-bottom: 10px; }
+.category { font-style: italic; margin-bottom: 10px; }
+.description { margin-bottom: 15px; }
+.details { margin-bottom: 15px; }
+.images { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.images img { max-width: 200px; border: 1px solid #ddd; border-radius: 5px; }
+.back-link { margin-top: 20px; display: inline-block; text-decoration: none; color: #333; }
+.back-link:hover { text-decoration: underline; }
+.sub-item { padding: 6px 0 6px 15px; border-bottom: 1px solid #ddd; }
+.sub-item:last-child { border-bottom: none; }
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+  color: #555;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-right: 1px solid #e0e0e0;
+  height: 100vh;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sidebar form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.95em;
+}
+
+.sidebar input[type="number"],
+.sidebar select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sidebar input[type="number"]:focus,
+.sidebar select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.sidebar select[multiple] {
+  height: 100px;
+}
+
+.sidebar input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.sidebar button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #800000;
+  border: none;
+  color: white;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.sidebar button:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.content {
+  padding: 20px;
+  margin-left: 240px;
+}
+
+h1 { 
+  margin-bottom: 20px; 
+  color: #333;
+}
+
+.item { 
+  padding: 15px; 
+  border-bottom: 1px solid #eee; 
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.item a {
+  text-decoration: none;
+  color: #800000;
+}
+
+.item a:hover {
+  text-decoration: underline;
+}
+
+.item h3 {
+  margin-top: 5px;
+  color: #555;
+}
+details { margin-bottom: 12px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background: #fafafa; }
+summary { cursor: pointer; font-size: 18px; font-weight: bold; }
+
+.auth-content {
+  text-align: center; 
+  background: white; 
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.auth-form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto; 
+}
+
+.user-home {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;  */
+  align-items: center;     
+  min-height: 100vh;       
+  background-color: #f5f5f5; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Inner content styling */
+.user-home > div {
+  background: #ffffff;      /* card background */
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;        /* limit width */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+.user-home p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Buttons styling */
+.user-home button {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.user-home button:hover {
+  background-color: #0056b3;
+}
+
+/* Logout button separate styling */
+.user-home > a > button {
+  background-color: #800000;
+}
+
+.user-home > a > button:hover {
+  background-color: #0056b3;
+}
+
+/* Edit form card styling */
+.edit-form {
+  background: #ffffff;      /* card background */
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;       /* center the form */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;               /* spacing between inputs */
+}
+
+/* Labels styling */
+.edit-form label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Inputs styling */
+.edit-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Standard button styling */
+.edit-form button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.edit-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Danger Zone button styling */
+.edit-form + hr + h3 + form button {
+  background-color: red;
+  color: white;
+  margin-top: 10px;
+}
+
+.edit-form + hr + h3 + form button:hover {
+  background-color: darkred;
+}
+
+/* Optional: Danger Zone card container */
+.edit-form + hr + h3 + form {
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.centered-form {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+
+  /* Center on screen */
+  margin: 50px auto; /* vertical spacing + center horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Headings inside form */
+.centered-form h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* Labels */
+.centered-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.95em;
+}
+
+/* Inputs, textarea, select */
+.centered-form input[type="text"],
+.centered-form input[type="number"],
+.centered-form input[type="email"],
+.centered-form textarea,
+.centered-form select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.centered-form input[type="text"]:focus,
+.centered-form input[type="number"]:focus,
+.centered-form input[type="email"]:focus,
+.centered-form textarea:focus,
+.centered-form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* Checkbox group */
+.centered-form .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.centered-form .checkbox-group label {
+  font-weight: normal;
+  color: #555;
+  cursor: pointer;
+}
+
+.centered-form .checkbox-group input[type="checkbox"] {
+  margin-right: 6px;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Buttons */
+.centered-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #800000;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.centered-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Optional back link */
+.centered-form a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #800000;
+  font-weight: 600;
+}
+
+.centered-form a:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }

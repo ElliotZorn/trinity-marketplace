@@ -5,11 +5,12 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+    <%- include('header') %>
     <h1>Edit Profile</h1>
     <% if (error) { %>
         <p style="color: red;"><%= error %></p>
     <% } %>
-    <form action="/users/update/<%= user.user_id %>" method="POST">
+    <form class="edit-form" action="/users/update/<%= user.user_id %>" method="POST">
         <label>Username:</label>
         <input type="text" name="username" value="<%= user.username %>" required><br>
         
@@ -30,7 +31,7 @@
 
     <hr>
     <h3>Danger Zone</h3>
-    <form action="/users/delete/<%= user.user_id %>" method="POST" onsubmit="return confirm('Are you sure?');">
+    <form action="/users/delete/<%= session.userId%>" method="POST" onsubmit="return confirm('Are you sure?');">
         <button type="submit" style="background-color: red; color: white;">Delete Account</button>
     </form>
 </body>

@@ -5,24 +5,30 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <h1>Welcome, <%= user.first_name %>!</h1>
-    
-    <div class="dashboard-options">
-        <div class="option">
-            <h3>Marketplace</h3>
-            <p>Browse and search for items.</p>
-            <!-- <a href="/userProducts?seller_id=<%= user.user_id %>"><button>View Products</button></a> -->
-            <a href="/search/categories"><button>View Products</button></a>
+    <%- include('header') %>
 
-        </div>
+    <div class="user-home">
+        <h1 >Welcome, <%= user.first_name %>!</h1>
 
-        <div class="option">
-            <h3>My Profile</h3>
-            <p>Update your details or delete account.</p>
+        <div>
+            <p>Update your details or delete your account.</p>
             <a href="/users/edit/<%= user.user_id %>"><button>Edit Profile</button></a>
+            <a href="/users/delete/<%= user.user_id %>"><button>Delete Account</button></a>
         </div>
+
+        <br>
+
+        <div>
+            <p>Manage your products:</p>
+            <a href="/userProducts"><button>View My Products</button></a>
+            <a href="/userProducts/interests"><button>Interests</button></a>
+        </div>
+
+        <br>
+
+        <a href="/auth/logout"><button>Logout</button></a>
+
     </div>
 
-    <br>
-    <a href="/auth/logout">Logout</a> </body>
+</body>
 </html>

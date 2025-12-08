@@ -2,18 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Category Search</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    details { margin-bottom: 12px; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background: #fafafa; }
-    summary { cursor: pointer; font-size: 18px; font-weight: bold; }
-    .sub-item { padding: 6px 0 6px 15px; border-bottom: 1px solid #ddd; }
-    .sub-item:last-child { border-bottom: none; }
-    a { text-decoration: none; color: #333; }
-    a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
+  <%- include('header') %>
   <h1>Category Search</h1>
 
 <% Object.keys(categoryMap).forEach(parentName => { %>

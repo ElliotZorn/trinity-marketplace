@@ -29,7 +29,13 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  res.redirect('/');
+  req.session.destroy(err => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send('Error logging out');
+    }
+    res.redirect('/auth');
+  });
 });
 
 module.exports = router;

@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Sign In</title>
 </head>
-<body>
-  <h1>Sign In</h1>
-  <% if (error) { %>
-    <p style="color: red;"><%= error %></p>
-  <% } %>
 
-  <form action="/auth" method="POST">
-    <label>Email: <input type="email" name="email" required></label><br>
-    <label>Password: <input type="password" name="password" required></label><br>
-    <button type="submit">Sign In</button>
-  </form>
+<body>
+  <%- include('header') %>
+
+  <div class="auth-content">
+    <h1>Sign In</h1>
+
+    <% if (error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+
+    <form class="auth-form" action="/auth" method="POST" style="max-width: 400px; display: flex; flex-direction: column; gap: 12px;">
+      <label>
+        Email:
+        <input type="email" name="email" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      </label>
+
+      <label>
+        Password:
+        <input type="password" name="password" required style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      </label>
+
+      <button type="submit" style="padding: 10px; border-radius: 6px; background: #800000; color: white; border: none; cursor: pointer;">
+        Sign In
+      </button>
+    </form>
+  </div>
 </body>
 </html>
